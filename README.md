@@ -1,13 +1,8 @@
-# Sugar Transfection Prediction v6
+# Sugar Transfection Prediction
 
-This directory contains the v6 workflow used to train, evaluate, interpret, and apply machine-learning models for predicting luciferase expression (RLU) from sugar physicochemical properties and RDKit molecular descriptors.
+This directory contains the workflow used to train, evaluate, interpret, and apply machine-learning models for predicting luciferase expression (RLU) from sugar physicochemical properties and RDKit molecular descriptors.
 
-The manuscript analyses use the scripts with their default parameters unless otherwise noted. Run all commands from this `v6` directory.
-
-```powershell
-cd D:\xk\project\xulifeng\sugar\v6
-conda activate sugar
-```
+The manuscript analyses use the scripts with their default parameters unless otherwise noted. Run all commands from this directory.
 
 Alternatively, prefix commands with `conda run -n sugar`.
 
