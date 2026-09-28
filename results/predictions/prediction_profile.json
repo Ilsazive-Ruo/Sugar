@@ -1,0 +1,10 @@
+{
+  "input": "ToBeScreened.csv",
+  "model_dir": "models",
+  "metadata": "results\\full_models\\full_model_metadata.csv",
+  "n_input_rows": 600,
+  "n_predictions": 600,
+  "model": "XGBoost",
+  "feature_set": "provided_plus_rdkit_descriptors",
+  "model_path": "models\\XGBoost__provided_plus_rdkit_descriptors.joblib"
+}

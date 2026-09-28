@@ -1,0 +1,67 @@
+{
+  "data": "dataset.csv",
+  "model_cv_dir": "results\\model_feature_nested_cv",
+  "model": "XGBoost",
+  "feature_sets": [
+    "provided_only",
+    "provided_plus_rdkit_descriptors",
+    "rdkit_descriptors_only"
+  ],
+  "feature_set_sizes": {
+    "provided_only": 5,
+    "provided_plus_rdkit_descriptors": 222,
+    "rdkit_descriptors_only": 217
+  },
+  "best_params_by_feature_set": {
+    "provided_only": {
+      "model__colsample_bytree": 0.8,
+      "model__gamma": 0.0,
+      "model__learning_rate": 0.1,
+      "model__max_depth": 4,
+      "model__min_child_weight": 4,
+      "model__n_estimators": 300,
+      "model__reg_alpha": 1.0,
+      "model__reg_lambda": 10.0,
+      "model__subsample": 1.0
+    },
+    "provided_plus_rdkit_descriptors": {
+      "model__colsample_bytree": 1.0,
+      "model__gamma": 0.0,
+      "model__learning_rate": 0.1,
+      "model__max_depth": 5,
+      "model__min_child_weight": 4,
+      "model__n_estimators": 200,
+      "model__reg_alpha": 1.0,
+      "model__reg_lambda": 3.0,
+      "model__subsample": 0.85,
+      "select__k": "all"
+    },
+    "rdkit_descriptors_only": {
+      "model__colsample_bytree": 0.6,
+      "model__gamma": 0.0,
+      "model__learning_rate": 0.1,
+      "model__max_depth": 2,
+      "model__min_child_weight": 8,
+      "model__n_estimators": 300,
+      "model__reg_alpha": 1.0,
+      "model__reg_lambda": 3.0,
+      "model__subsample": 0.85,
+      "select__k": 20
+    }
+  },
+  "repeats": 10,
+  "folds": 5,
+  "seed": 42,
+  "fold_metrics_include_train_metrics": true,
+  "train_predictions_file": "results\\feature_analysis\\cv_train_predictions.csv",
+  "shap_method": "xgboost pred_contribs",
+  "shap_stability_method": "fold-level mean_abs_shap rank and magnitude stability across repeated CV",
+  "feature_correlation_method": "Pearson correlation after the same imputation, variance filtering, and SelectKBest feature selection used by the model",
+  "correlation_threshold": 0.8,
+  "correlation_matrix_files": [
+    "results\\feature_analysis\\feature_correlation_matrices\\provided_only_pearson.csv",
+    "results\\feature_analysis\\feature_correlation_matrices\\provided_plus_rdkit_descriptors_pearson.csv",
+    "results\\feature_analysis\\feature_correlation_matrices\\rdkit_descriptors_only_pearson.csv"
+  ],
+  "xgboost_all_feature_target_correlation_method": "XGBoost with provided_plus_rdkit_descriptors fitted on the full training set; feature values are the raw provided/RDKit input features before pipeline transforms; used_by_xgboost_after_pipeline marks features retained after the model pipeline imputer, variance filter, and SelectKBest; Pearson and Spearman correlations are computed against Luciferase expression (RLU). Full Pearson and Spearman two-dimensional matrices include Luciferase expression (RLU) plus all input features."
+}

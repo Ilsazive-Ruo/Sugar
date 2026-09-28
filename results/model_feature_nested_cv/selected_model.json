@@ -1,0 +1,58 @@
+{
+  "selection_basis": "best scenario by repeated outer-CV mean RMSE after inner 1-SE tuning",
+  "selected_model": "XGBoost",
+  "selected_feature_set": "provided_plus_rdkit_descriptors",
+  "selected_scenario": "XGBoost__provided_plus_rdkit_descriptors",
+  "params_by_feature_set": {
+    "provided_only": {
+      "model__colsample_bytree": 0.8,
+      "model__gamma": 0.0,
+      "model__learning_rate": 0.1,
+      "model__max_depth": 4,
+      "model__min_child_weight": 4,
+      "model__n_estimators": 300,
+      "model__reg_alpha": 1.0,
+      "model__reg_lambda": 10.0,
+      "model__subsample": 1.0
+    },
+    "provided_plus_rdkit_descriptors": {
+      "model__colsample_bytree": 1.0,
+      "model__gamma": 0.0,
+      "model__learning_rate": 0.1,
+      "model__max_depth": 5,
+      "model__min_child_weight": 4,
+      "model__n_estimators": 200,
+      "model__reg_alpha": 1.0,
+      "model__reg_lambda": 3.0,
+      "model__subsample": 0.85,
+      "select__k": "all"
+    },
+    "rdkit_descriptors_only": {
+      "model__colsample_bytree": 0.6,
+      "model__gamma": 0.0,
+      "model__learning_rate": 0.1,
+      "model__max_depth": 2,
+      "model__min_child_weight": 8,
+      "model__n_estimators": 300,
+      "model__reg_alpha": 1.0,
+      "model__reg_lambda": 3.0,
+      "model__subsample": 0.85,
+      "select__k": 20
+    }
+  },
+  "best_summary": {
+    "scenario_run": "XGBoost__provided_plus_rdkit_descriptors",
+    "model": "XGBoost",
+    "feature_set": "provided_plus_rdkit_descriptors",
+    "mean_fold_rmse": 962549.908922297,
+    "mean_fold_mae": 675925.1362386068,
+    "mean_fold_r2": 0.838782463962273,
+    "mean_train_val_rmse_gap": 544481.898236287,
+    "mean_train_val_rmse_ratio": 3.2320316955447566,
+    "mean_train_val_r2_gap": 0.12326715078161582,
+    "mean_train_rmse": 418068.01068600995,
+    "mean_train_r2": 0.9620496147438888,
+    "pooled_oof_rmse": 979575.8321028171,
+    "pooled_oof_r2": 0.8419817773324068
+  }
+}

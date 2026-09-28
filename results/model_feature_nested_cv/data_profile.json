@@ -1,0 +1,844 @@
+{
+  "data": "dataset.csv",
+  "target": "Luciferase expression (RLU)",
+  "n_samples": 300,
+  "models": [
+    "XGBoost",
+    "GBoost",
+    "RandomForest",
+    "DecisionTree",
+    "KNN"
+  ],
+  "feature_sets": [
+    "provided_only",
+    "provided_plus_rdkit_descriptors",
+    "rdkit_descriptors_only"
+  ],
+  "feature_set_sizes": {
+    "provided_only": 5,
+    "provided_plus_rdkit_descriptors": 222,
+    "rdkit_descriptors_only": 217
+  },
+  "repeats": 10,
+  "repeat_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "search_iter": 80,
+  "param_profile": "anti_overfit",
+  "selection_rule": "one_standard_error",
+  "primary_outputs_use_selection_rule": "one_standard_error",
+  "selection_rules_compared": [
+    "best_rmse",
+    "one_standard_error"
+  ],
+  "one_se_multiplier": 1.0,
+  "feature_selection": "auto",
+  "overfit_controls": [
+    "nested cross-validation",
+    "balanced regularized anti-overfit parameter grids",
+    "one-standard-error hyperparameter selection by default",
+    "train metrics and train-validation gaps per outer fold",
+    "SelectKBest feature-count tuning for high-dimensional descriptor feature sets",
+    "subsampling, column sampling, stronger tree depth and leaf-size constraints"
+  ],
+  "fold_metrics_include_train_metrics": true,
+  "repeat_metrics_file": "results\\model_feature_nested_cv\\repeat_metrics.csv",
+  "selection_rule_comparison_files": {
+    "summary": "results\\model_feature_nested_cv\\cv_summary_selection_rules.csv",
+    "repeat_metrics": "results\\model_feature_nested_cv\\repeat_metrics_selection_rules.csv",
+    "fold_metrics": "results\\model_feature_nested_cv\\fold_metrics_selection_rules.csv",
+    "predictions": "results\\model_feature_nested_cv\\cv_predictions_selection_rules.csv",
+    "train_predictions": "results\\model_feature_nested_cv\\cv_train_predictions_selection_rules.csv",
+    "best_hyperparameters": "results\\model_feature_nested_cv\\best_hyperparameters_selection_rules.csv"
+  },
+  "metric_wide_files": [
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\r2.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\rmse.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\mae.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\train_r2.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\train_rmse.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\train_val_rmse_gap.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\train_val_rmse_ratio.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\rmse_ratio.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\train_val_r2_gap.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\inner_selected_rmse_mean.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\inner_selected_rmse_gap_vs_min_mean.csv",
+    "results\\model_feature_nested_cv\\metric_wide\\repeat_mean\\one_se_candidate_count_mean.csv"
+  ],
+  "selected_model_file": "results\\model_feature_nested_cv\\selected_model.json",
+  "train_predictions_file": "results\\model_feature_nested_cv\\cv_train_predictions.csv",
+  "baseline_search_grids": {
+    "XGBoost": {
+      "model__n_estimators": [
+        100,
+        200,
+        300,
+        500
+      ],
+      "model__learning_rate": [
+        0.02,
+        0.05,
+        0.08,
+        0.1
+      ],
+      "model__max_depth": [
+        2,
+        3,
+        5,
+        8
+      ],
+      "model__min_child_weight": [
+        1,
+        2,
+        4
+      ],
+      "model__subsample": [
+        0.7,
+        0.85,
+        1.0
+      ],
+      "model__colsample_bytree": [
+        0.7,
+        0.85,
+        1.0
+      ],
+      "model__reg_lambda": [
+        0.5,
+        1.0,
+        2.0
+      ]
+    },
+    "GBoost": {
+      "model__n_estimators": [
+        100,
+        200,
+        300,
+        500
+      ],
+      "model__learning_rate": [
+        0.02,
+        0.05,
+        0.08,
+        0.1
+      ],
+      "model__max_depth": [
+        2,
+        3,
+        5,
+        8
+      ],
+      "model__subsample": [
+        0.7,
+        0.85,
+        1.0
+      ],
+      "model__min_samples_leaf": [
+        1,
+        2,
+        4,
+        8
+      ]
+    },
+    "RandomForest": {
+      "model__n_estimators": [
+        100,
+        200,
+        300,
+        500
+      ],
+      "model__max_depth": [
+        null,
+        5,
+        8,
+        12,
+        16
+      ],
+      "model__min_samples_split": [
+        2,
+        4,
+        8,
+        12
+      ],
+      "model__min_samples_leaf": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "model__max_features": [
+        1.0,
+        "sqrt",
+        0.5
+      ]
+    },
+    "DecisionTree": {
+      "model__max_depth": [
+        null,
+        3,
+        5,
+        8,
+        12
+      ],
+      "model__min_samples_split": [
+        2,
+        4,
+        8,
+        12
+      ],
+      "model__min_samples_leaf": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "model__max_features": [
+        null,
+        "sqrt",
+        0.5,
+        1.0
+      ]
+    },
+    "KNN": {
+      "model__n_neighbors": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        15
+      ],
+      "model__weights": [
+        "uniform",
+        "distance"
+      ],
+      "model__p": [
+        1,
+        2
+      ]
+    }
+  },
+  "effective_search_grids_by_feature_set": {
+    "XGBoost": {
+      "provided_only": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__learning_rate": [
+          0.03,
+          0.06,
+          0.1
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_child_weight": [
+          1,
+          4,
+          8
+        ],
+        "model__subsample": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__colsample_bytree": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__reg_lambda": [
+          1.0,
+          3.0,
+          10.0
+        ],
+        "model__reg_alpha": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "model__gamma": [
+          0.0,
+          0.1,
+          1.0
+        ]
+      },
+      "provided_plus_rdkit_descriptors": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__learning_rate": [
+          0.03,
+          0.06,
+          0.1
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_child_weight": [
+          1,
+          4,
+          8
+        ],
+        "model__subsample": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__colsample_bytree": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__reg_lambda": [
+          1.0,
+          3.0,
+          10.0
+        ],
+        "model__reg_alpha": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "model__gamma": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      },
+      "rdkit_descriptors_only": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__learning_rate": [
+          0.03,
+          0.06,
+          0.1
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_child_weight": [
+          1,
+          4,
+          8
+        ],
+        "model__subsample": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__colsample_bytree": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__reg_lambda": [
+          1.0,
+          3.0,
+          10.0
+        ],
+        "model__reg_alpha": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "model__gamma": [
+          0.0,
+          0.1,
+          1.0
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      }
+    },
+    "GBoost": {
+      "provided_only": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__learning_rate": [
+          0.03,
+          0.06,
+          0.1
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__subsample": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ]
+      },
+      "provided_plus_rdkit_descriptors": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__learning_rate": [
+          0.03,
+          0.06,
+          0.1
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__subsample": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      },
+      "rdkit_descriptors_only": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__learning_rate": [
+          0.03,
+          0.06,
+          0.1
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__subsample": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      }
+    },
+    "RandomForest": {
+      "provided_only": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__bootstrap": [
+          true
+        ],
+        "model__max_samples": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ]
+      },
+      "provided_plus_rdkit_descriptors": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__bootstrap": [
+          true
+        ],
+        "model__max_samples": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      },
+      "rdkit_descriptors_only": {
+        "model__n_estimators": [
+          100,
+          200,
+          300
+        ],
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__bootstrap": [
+          true
+        ],
+        "model__max_samples": [
+          0.7,
+          0.85,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      }
+    },
+    "DecisionTree": {
+      "provided_only": {
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ]
+      },
+      "provided_plus_rdkit_descriptors": {
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      },
+      "rdkit_descriptors_only": {
+        "model__max_depth": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "model__min_samples_split": [
+          2,
+          8,
+          16
+        ],
+        "model__min_samples_leaf": [
+          1,
+          4,
+          8
+        ],
+        "model__max_features": [
+          0.6,
+          0.8,
+          1.0
+        ],
+        "model__ccp_alpha": [
+          0.0,
+          0.0001,
+          0.001
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      }
+    },
+    "KNN": {
+      "provided_only": {
+        "model__n_neighbors": [
+          5,
+          9,
+          15,
+          21,
+          31
+        ],
+        "model__weights": [
+          "uniform",
+          "distance"
+        ],
+        "model__p": [
+          1,
+          2
+        ]
+      },
+      "provided_plus_rdkit_descriptors": {
+        "model__n_neighbors": [
+          5,
+          9,
+          15,
+          21,
+          31
+        ],
+        "model__weights": [
+          "uniform",
+          "distance"
+        ],
+        "model__p": [
+          1,
+          2
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      },
+      "rdkit_descriptors_only": {
+        "model__n_neighbors": [
+          5,
+          9,
+          15,
+          21,
+          31
+        ],
+        "model__weights": [
+          "uniform",
+          "distance"
+        ],
+        "model__p": [
+          1,
+          2
+        ],
+        "select__k": [
+          20,
+          40,
+          80,
+          120,
+          "all"
+        ]
+      }
+    }
+  }
+}

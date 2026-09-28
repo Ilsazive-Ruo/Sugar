@@ -1,0 +1,13 @@
+﻿row_index,ID,name,original_smiles,cleaned_smiles
+18,,D-Trehalose Dihydrate,"	
+O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.[2 H2O]",O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.O.O
+24,,Kojibiose,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1-;@O-;@[C@@H](-;@[C@@H](O)-;@[C@H](O)-;@[C@H]-;@1O)CO,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1O[C@@H]([C@@H](O)[C@H](O)[C@H]1O)CO
+93,,D-Trehalose Dihydrate,"	
+O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.[2 H2O]",O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.O.O
+99,,Kojibiose,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1-;@O-;@[C@@H](-;@[C@@H](O)-;@[C@H](O)-;@[C@H]-;@1O)CO,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1O[C@@H]([C@@H](O)[C@H](O)[C@H]1O)CO
+168,,D-Trehalose Dihydrate,"	
+O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.[2 H2O]",O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.O.O
+174,,Kojibiose,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1-;@O-;@[C@@H](-;@[C@@H](O)-;@[C@H](O)-;@[C@H]-;@1O)CO,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1O[C@@H]([C@@H](O)[C@H](O)[C@H]1O)CO
+243,,D-Trehalose Dihydrate,"	
+O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.[2 H2O]",O[C@H]1[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)O[C@H](CO)[C@@H](O)[C@@H]1O.O.O
+249,,Kojibiose,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1-;@O-;@[C@@H](-;@[C@@H](O)-;@[C@H](O)-;@[C@H]-;@1O)CO,OC[C@@H](O)[C@@H](O)[C@H](O)[C@H](C=O)O[C@H]1O[C@@H]([C@@H](O)[C@H](O)[C@H]1O)CO
